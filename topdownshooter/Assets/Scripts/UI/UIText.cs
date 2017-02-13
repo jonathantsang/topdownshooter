@@ -9,9 +9,10 @@ public class UIText : MonoBehaviour {
 	private GameController GC;
 	private GameObject GameManager;
 
-	public Text WaveText;
-	public Text ZombiesRemainText;
-	public Text PointsText;
+	public Text roundText;
+	public Text zombiesRemainText;
+	public Text pointsText;
+	public Text livesText;
 
 	// Use this for initialization
 	void Start () {
@@ -27,17 +28,18 @@ public class UIText : MonoBehaviour {
 
 	void UpdateText(){
 		// Update wave text
-		WaveText.text = "Wave: " + GC.CurrWave;
+		roundText.text = "Round: " + GC.currRound;
 		// Update points text
-		PointsText.text = "Points: " + GC.Points;
+		pointsText.text = "Points: " + GC.Points;
 		// Update the number of zombies remaining
-		int remaining = GC.waveDesign [GC.CurrWave].amtZombies - GC.ZombiesDestroyed;
+		int remaining = GC.waveDesign [GC.currRound].amtZombies - GC.ZombiesDestroyed;
 		// Check if one zombie remains
 		if (remaining == 1) {
-			ZombiesRemainText.text = remaining + " Zombie Remains";
+			zombiesRemainText.text = remaining + " Zombie Remains";
 		} else {
-			ZombiesRemainText.text = remaining  + " Zombies Remain";
+			zombiesRemainText.text = remaining  + " Zombies Remain";
 		}
+		livesText.text = "Lives: " + GC.lives;
 
 	}
 }

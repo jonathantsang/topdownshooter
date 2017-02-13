@@ -18,11 +18,11 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {
-		print ("Touched");
+		Debug.Log ("Enter");
 	}
 
 	void OnCollisionExit2D(Collision2D col) {
-		print ("Exit");
+		Debug.Log ("Exit");
 	}
 
 	void movement(){
