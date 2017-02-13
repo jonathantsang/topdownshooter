@@ -46,13 +46,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\BulletMove.cs" />
-     <Compile Include="Assets\Scripts\EnemyMovement.cs" />
-     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\Movement\BulletMove.cs" />
+     <Compile Include="Assets\Scripts\Movement\EnemyMovement.cs" />
+     <Compile Include="Assets\Scripts\Movement\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\ShootBullet.cs" />
-     <Compile Include="Assets\Scripts\UI\GameController.cs" />
      <Compile Include="Assets\Scripts\UI\LevelData.cs" />
      <Compile Include="Assets\Scripts\UI\UIText.cs" />
+     <Compile Include="Assets\Scripts\UX\ESCquit.cs" />
+     <Compile Include="Assets\Scripts\WepController.cs" />
+     <Compile Include="Assets\Scripts\gameOver\gameOverController.cs" />
+     <Compile Include="Assets\Scripts\startScreen\StartScreenController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

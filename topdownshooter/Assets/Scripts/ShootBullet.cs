@@ -31,7 +31,7 @@ public class ShootBullet : MonoBehaviour {
 	}
 
 	void shootproj(){
-		if(Input.GetKey("space") && firerate > timetowait){
+		if(Input.GetKeyDown("space") && firerate > timetowait){
 			GameObject newbullet = Instantiate (bullet, gameObject.transform.position, Quaternion.identity) as GameObject;
 			// Ignore the collision of bullet and player
 			Physics2D.IgnoreCollision(newbullet.GetComponent<CircleCollider2D>(), gameObject.GetComponent<BoxCollider2D>());

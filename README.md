@@ -6,7 +6,7 @@ A top down shooter based on zombies and other shooters.
 
 - Customizable spawn waves
 - Points integration
-- Game Over mechanics and lives
+- Game over mechanics and lives
 
 ## To Add:
 
