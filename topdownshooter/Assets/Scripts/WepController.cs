@@ -18,7 +18,7 @@ public class WepController : MonoBehaviour {
 	private GameObject squareSelector;
 	private Vector2 defaultplacement;
 
-	private float width = 1.5f;
+	private float width = 1.3f;
 
 	// Use this for initialization
 	void Start () {

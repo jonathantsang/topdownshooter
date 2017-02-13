@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyMovement : MonoBehaviour {
 
@@ -31,7 +32,8 @@ public class EnemyMovement : MonoBehaviour {
 			Debug.Log("live lost");
 			if (GC.lives <= 1) {
 				Debug.Log ("Game Over");
-				// Display Game Over
+				SceneManager.LoadScene ("GameOver");
+				GC.cleanslate ();
 			} else {
 				// Lose a life
 				GC.lives -= 1;

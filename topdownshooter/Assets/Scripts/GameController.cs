@@ -41,9 +41,7 @@ public class GameController : MonoBehaviour {
 		enemy = GameObject.FindGameObjectWithTag("enemy");
 
 		// Initialize to start wave 0
-		currRound = 0;
-		ZombiesDestroyed = 0;
-		lives = 3;
+		cleanslate();
 
 		// Find the number of enemies to spawn
 		spawnnumber = waveDesign [currRound].amtZombies;
@@ -71,24 +69,28 @@ public class GameController : MonoBehaviour {
 		if (localZombCounter > 0) {
 			timeInterval = Time.time - lastSpawnTime;
 			if (timeInterval > spawnInterval) {
-				pickrandom = (int) (Time.deltaTime + Random.Range(1,200)) % spawnPoints.Length;
+				if (spawnPoints.Length > 0) {
+					pickrandom = (int)(Time.deltaTime + Random.Range (1, 200)) % spawnPoints.Length;
 
-				// These two need to be redefined because after scene is reloaded, they are destroyed
-				// Find enemy prefab
-				enemy = GameObject.FindGameObjectWithTag("enemy");
-				// Find objects needed for first level
-				spawnPoints = GameObject.FindGameObjectsWithTag ("spawn");
+					// These two need to be redefined because after scene is reloaded, they are destroyed
+					// Find enemy prefab
+					enemy = GameObject.FindGameObjectWithTag ("enemy");
+					// Find objects needed for first level
+					spawnPoints = GameObject.FindGameObjectsWithTag ("spawn");
 
-				// Select the placement AFTER the redefinition of the list of spawnPoints
-				GameObject placement = spawnPoints [pickrandom];
+					// Select the placement AFTER the redefinition of the list of spawnPoints
+					GameObject placement = spawnPoints [pickrandom];
 
-				// Check if it is null, do not instantiate
-				if (enemy != null) {
-					Instantiate (enemy, placement.transform.position, Quaternion.identity);
-					// Delay the next spawn, and decrease counter of spawning
-					lastSpawnTime = Time.time;
-					localZombCounter -= 1;
-					Debug.Log (localZombCounter);
+					// Check if it is null, do not instantiate
+					if (enemy != null) {
+						Instantiate (enemy, placement.transform.position, Quaternion.identity);
+						// Delay the next spawn, and decrease counter of spawning
+						lastSpawnTime = Time.time;
+						localZombCounter -= 1;
+						Debug.Log (localZombCounter);
+					}
+				} else {
+					Debug.Log ("spawnPoints is empty");
 				}
 			}
 		}
@@ -112,9 +114,17 @@ public class GameController : MonoBehaviour {
 	void checkdead(){
 		if (lives <= 0) {
 			Debug.Log ("Game Over");
-			Application.Quit();
+			SceneManager.LoadScene ("GameOver");
 			// Game Ends
+			cleanslate();
 		}
+	}
+
+	public void cleanslate(){
+		currRound = 0;
+		ZombiesDestroyed = 0;
+		Points = 0;
+		lives = 3;
 	}
 
 	void checknewlevel(){
