@@ -6,6 +6,7 @@ A top down shooter based on zombies and other shooters.
 
 - Customizable spawn waves
 - Points integration
+- Game Over mechanics and lives
 
 ## To Add:
 
@@ -21,3 +22,4 @@ A top down shooter based on zombies and other shooters.
 ## Sprites and Sounds come from:
 
 Worms Reloaded
+Black Ops Zombies
