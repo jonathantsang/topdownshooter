@@ -5,7 +5,7 @@ using UnityEngine;
 public class WepController : MonoBehaviour {
 
 	// index starts at 0, but 1-6 are the available weapons
-	private int weaponchoice;
+	public int weaponchoice;
 
 	// Weapons
 	private int numBlaster = 1;

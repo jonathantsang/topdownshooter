@@ -10,9 +10,13 @@ A top down shooter based on zombies and other shooters.
 - resolution scaling for 4:3 windowed screens
 - start screen and game over screen
 
+## Weapons:
+- reg bullets
+- axe boomerang
+
 ## To Add:
 
-- Weapon customization
+- Weapon customization (being added)
 - More rooms
 - random box
 - powerups

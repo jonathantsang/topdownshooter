@@ -43,7 +43,7 @@ public class EnemyMovement : MonoBehaviour {
 			}
 		}
 		// Check if it touches a bullet
-		if (col.gameObject.tag == "bullet") {
+		if (col.gameObject.tag == "bullet" || col.gameObject.tag == "axe") {
 			myHealth -= 35;
 		}
 		// Check if the enemy health is 0

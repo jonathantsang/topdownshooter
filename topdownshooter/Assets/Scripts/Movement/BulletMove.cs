@@ -44,7 +44,7 @@ public class BulletMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.Translate (unitv);
-		if(Time.time - starttime > 10){
+		if(Time.time - starttime > 8){
 			Destroy(gameObject);
 		}
 	}

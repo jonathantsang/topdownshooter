@@ -47,9 +47,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\Movement\AxeMove.cs" />
      <Compile Include="Assets\Scripts\Movement\BulletMove.cs" />
      <Compile Include="Assets\Scripts\Movement\EnemyMovement.cs" />
      <Compile Include="Assets\Scripts\Movement\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Movement\spriteRotate.cs" />
      <Compile Include="Assets\Scripts\ShootBullet.cs" />
      <Compile Include="Assets\Scripts\UI\LevelData.cs" />
      <Compile Include="Assets\Scripts\UI\UIText.cs" />
