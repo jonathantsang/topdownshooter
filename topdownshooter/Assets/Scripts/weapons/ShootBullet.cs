@@ -6,6 +6,7 @@ public class ShootBullet : MonoBehaviour {
 
 	public GameObject bullet;
 	public GameObject axe;
+	public GameObject rocket;
 
 	private float firerate;
 	private double timetowait;
@@ -59,6 +60,14 @@ public class ShootBullet : MonoBehaviour {
 			// Axe
 		} else if (weaponSelect == 2) {
 			GameObject newthing = Instantiate (axe, gameObject.transform.position, Quaternion.identity) as GameObject;
+			// Ignore the collision of bullet and player
+			Physics2D.IgnoreCollision (newthing.GetComponent<CircleCollider2D> (), gameObject.GetComponent<BoxCollider2D> ());
+			firerate = 0;
+		} else if (weaponSelect == 4) {
+			// Set the rocket to face the mouse pos with "gameObject.transform.rotation"
+			GameObject newthing = Instantiate (rocket, gameObject.transform.position, Quaternion.identity) as GameObject;
+			// GameObject spritepart = newthing.GetComponentInChildren<GameObject> () as GameObject;
+			// spritepart.transform.rotation = gameObject.transform.rotation;
 			// Ignore the collision of bullet and player
 			Physics2D.IgnoreCollision (newthing.GetComponent<CircleCollider2D> (), gameObject.GetComponent<BoxCollider2D> ());
 			firerate = 0;

@@ -16,6 +16,9 @@ A top down shooter based on zombies and other shooters.
 
 ## To Add:
 
+- sound effects
+- better sprites
+
 - Weapon customization (being added)
 - More rooms
 - random box
@@ -24,6 +27,7 @@ A top down shooter based on zombies and other shooters.
 
 ## Other Notes:
 - fix bunny hopping
+- based on Boxhead: http://www.addictinggames.com/zombie-games/boxhead2play-game.jsp and Call of Duty Zombies
 
 ## Sprites and Sounds come from:
 
