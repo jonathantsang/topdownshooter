@@ -65,3 +65,5 @@
 /Users/Jon/GitHub/topdownshooter/topdownshooter/Temp/bin/Debug/Mono.Cecil.Mdb.dll
 /Users/Jon/GitHub/topdownshooter/topdownshooter/Temp/bin/Debug/Assembly-CSharp.dll.mdb
 /Users/Jon/GitHub/topdownshooter/topdownshooter/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/Jon/GitHub/topdownshooter/topdownshooter/Temp/bin/Debug/UnityEngine.Advertisements.dll
+/Users/Jon/GitHub/topdownshooter/topdownshooter/Temp/bin/Debug/UnityEngine.Purchasing.dll

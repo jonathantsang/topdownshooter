@@ -57,11 +57,10 @@
      <Compile Include="Assets\Scripts\movement\spriteRotate.cs" />
      <Compile Include="Assets\Scripts\startScreen\StartScreenController.cs" />
      <Compile Include="Assets\Scripts\weapons\AxeMove.cs" />
+     <Compile Include="Assets\Scripts\weapons\BombMove.cs" />
      <Compile Include="Assets\Scripts\weapons\BulletMove.cs" />
      <Compile Include="Assets\Scripts\weapons\RocketMove.cs" />
      <Compile Include="Assets\Scripts\weapons\ShootBullet.cs" />
-     <Compile Include="Assets\Scripts\weapons\ShotgunMove.cs" />
-     <Compile Include="Assets\Scripts\weapons\UziMove.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

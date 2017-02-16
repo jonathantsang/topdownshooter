@@ -43,9 +43,19 @@ public class EnemyMovement : MonoBehaviour {
 			}
 		}
 		// Check if it touches a bullet
-		if (col.gameObject.tag == "bullet" || col.gameObject.tag == "axe") {
-			myHealth -= 35;
-		}
+		if (col.gameObject.tag == "bullet") {
+			myHealth -= 40;
+		} else if (col.gameObject.tag == "bulletshotgun"){
+			myHealth -= 15;
+		} else if (col.gameObject.tag == "bulletuzi"){
+			myHealth -= 5;
+		} else if (col.gameObject.tag == "RPG"){
+			myHealth -= 70;
+		} else if (col.gameObject.tag == "bomb"){
+			myHealth -= 80;
+		} else if (col.gameObject.tag == "axe"){
+			myHealth -= 20;
+		} 
 		// Check if the enemy health is 0
 		if (myHealth <= 0) {
 			GC.ZombiesDestroyed += 1;

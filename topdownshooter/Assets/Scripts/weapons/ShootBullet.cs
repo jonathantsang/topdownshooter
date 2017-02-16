@@ -6,7 +6,10 @@ public class ShootBullet : MonoBehaviour {
 
 	public GameObject bullet;
 	public GameObject axe;
+	public GameObject bomb;
 	public GameObject rocket;
+	public GameObject shotgunb;
+	public GameObject uzib;
 
 	private float firerate;
 	private double timetowait;
@@ -44,13 +47,13 @@ public class ShootBullet : MonoBehaviour {
 	}
 
 	void shootproj(){
-		if(Input.GetKeyDown("space") && firerate > timetowait){
+		if(Input.GetKey("space") && firerate > timetowait){
 			checkWeapon ();
 		}
 	}
 
 	void checkWeapon(){
-		// Reg bullet
+			// Reg bullet
 		if (weaponSelect == 1) {
 			GameObject newthing = Instantiate (bullet, gameObject.transform.position, Quaternion.identity) as GameObject;
 			// Ignore the collision of bullet and player
@@ -63,6 +66,15 @@ public class ShootBullet : MonoBehaviour {
 			// Ignore the collision of bullet and player
 			Physics2D.IgnoreCollision (newthing.GetComponent<CircleCollider2D> (), gameObject.GetComponent<BoxCollider2D> ());
 			firerate = 0;
+
+			// Bomb
+		} else if (weaponSelect == 3) {
+			GameObject newthing = Instantiate (bomb, gameObject.transform.position, Quaternion.identity) as GameObject;
+			// Ignore the collision of bullet and player
+			Physics2D.IgnoreCollision (newthing.GetComponent<CircleCollider2D> (), gameObject.GetComponent<BoxCollider2D> ());
+			firerate = -2;
+
+			// RPG
 		} else if (weaponSelect == 4) {
 			// Set the rocket to face the mouse pos with "gameObject.transform.rotation"
 			GameObject newthing = Instantiate (rocket, gameObject.transform.position, Quaternion.identity) as GameObject;
@@ -71,6 +83,33 @@ public class ShootBullet : MonoBehaviour {
 			// Ignore the collision of bullet and player
 			Physics2D.IgnoreCollision (newthing.GetComponent<CircleCollider2D> (), gameObject.GetComponent<BoxCollider2D> ());
 			firerate = 0;
+
+			// Shotgun
+		} else if (weaponSelect == 5) {
+
+			// Spread
+			int spread = 5;
+			for (int i = 0; i < spread; i++) {
+				float spreadRandx = (Random.Range (1, 20)) % 6 + 1;
+				float spreadRandy = (Random.Range (1, 20)) % 6 + 1;
+				// Side bullets need rotation
+				GameObject newthing1 = Instantiate (shotgunb, gameObject.transform.position, Quaternion.identity) as GameObject;
+				Rigidbody2D ntrb1 = newthing1.GetComponent<Rigidbody2D> ();
+				ntrb1.AddForce (new Vector2 (spreadRandx, spreadRandy));
+				Physics2D.IgnoreCollision (newthing1.GetComponent<CircleCollider2D> (), gameObject.GetComponent<BoxCollider2D> ());
+			}
+			firerate = 0;
+
+		} else if (weaponSelect == 6) {
+			// Set the rocket to face the mouse pos with "gameObject.transform.rotation"
+			GameObject newthing = Instantiate (uzib, gameObject.transform.position, Quaternion.identity) as GameObject;
+
+			// Ignore the collision of bullet and player
+			Physics2D.IgnoreCollision (newthing.GetComponent<CircleCollider2D> (), gameObject.GetComponent<BoxCollider2D> ());
+			// Uzi fires faster
+			firerate = 0.6f;
+
+			// Shotgun
 		} else {
 			Debug.Log ("We got a problem with weapon select");
 		}
