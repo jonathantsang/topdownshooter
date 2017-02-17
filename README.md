@@ -31,7 +31,9 @@ A top down shooter based on zombies and other shooters.
 - fix bunny hopping
 - based on Boxhead: http://www.addictinggames.com/zombie-games/boxhead2play-game.jsp and Call of Duty Zombies
 
+
 ## Sprites and Sounds come from:
 
 Worms Reloaded  
 Black Ops Zombies
+http://soundimage.org/fantasywonder/

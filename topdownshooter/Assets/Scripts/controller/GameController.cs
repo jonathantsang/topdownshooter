@@ -29,6 +29,11 @@ public class GameController : MonoBehaviour {
 	// Initial Spawn
 	public GameObject player;
 
+	// Audio
+	public AudioSource[] sounds;
+	public AudioSource noise1;
+	public AudioSource noise2;
+
 	void Start(){
 		spawnPlayer ();
 
@@ -52,6 +57,14 @@ public class GameController : MonoBehaviour {
 
 		// Final Level prevents overflow (hard-coded since using a list not an array)
 		finalLevel = 5;
+
+		// Audio
+		sounds = GetComponents<AudioSource>();
+		noise1 = sounds[0];
+		noise2 = sounds[1];
+
+		// Play at beginning
+		noise2.Play();
 	}
 
 	void Update(){
@@ -87,7 +100,7 @@ public class GameController : MonoBehaviour {
 						// Delay the next spawn, and decrease counter of spawning
 						lastSpawnTime = Time.time;
 						localZombCounter -= 1;
-						Debug.Log (localZombCounter);
+						//Debug.Log (localZombCounter);
 					}
 				} else {
 					Debug.Log ("spawnPoints is empty");
@@ -104,11 +117,36 @@ public class GameController : MonoBehaviour {
 	public void restartRound(){
 		DontDestroyOnLoad (this);
 		SceneManager.LoadScene ("Main");
+		Debug.Log ("restarted");
+	}
+
+	void OnEnable()
+	{
+		//Tell our 'OnLevelFinishedLoading' function to start listening for a scene change as soon as this script is enabled.
+		SceneManager.sceneLoaded += OnLevelFinishedLoading;
+	}
+
+	void OnDisable()
+	{
+		//Tell our 'OnLevelFinishedLoading' function to stop listening for a scene change as soon as this script is disabled. Remember to always have an unsubscription for every delegate you subscribe to!
+		SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+	}
+
+	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode){
+		Debug.Log("Level Loaded");
+		Debug.Log(scene.name);
+		Debug.Log (mode);
+		// Reload stuff after scene changes
 		// Find the number of enemies to spawn
-		//spawnnumber = waveDesign [currRound].amtZombies;
-		//spawnInterval = waveDesign [currRound].spawnInterval;
-		//localZombCounter = spawnnumber;
+		spawnnumber = waveDesign [currRound].amtZombies;
+		spawnInterval = waveDesign [currRound].spawnInterval;
+		localZombCounter = spawnnumber;
 		ZombiesDestroyed = 0;
+		// Re-find spawn points
+		spawnPoints = GameObject.FindGameObjectsWithTag ("spawn");
+		// Gotta do this since the scene start is not run since the gamecontroller is not destroyed on load
+		spawnPlayer ();
+
 	}
 
 	void checkdead(){
@@ -134,6 +172,10 @@ public class GameController : MonoBehaviour {
 			// Valid level is loaded
 			if (currRound < finalLevel) {
 				Debug.Log ("Loaded");
+
+				// Play Zombies are coming audio clip
+				noise2.Play();
+
 				newRound (currRound);
 				ZombiesDestroyed = 0;
 				spawnnumber = waveDesign [currRound].amtZombies;

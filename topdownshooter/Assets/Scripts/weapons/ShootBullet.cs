@@ -82,7 +82,7 @@ public class ShootBullet : MonoBehaviour {
 			// spritepart.transform.rotation = gameObject.transform.rotation;
 			// Ignore the collision of bullet and player
 			Physics2D.IgnoreCollision (newthing.GetComponent<CircleCollider2D> (), gameObject.GetComponent<BoxCollider2D> ());
-			firerate = 0;
+			firerate = -3;
 
 			// Shotgun
 		} else if (weaponSelect == 5) {

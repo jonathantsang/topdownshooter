@@ -33,33 +33,39 @@ public class EnemyMovement : MonoBehaviour {
 			if (GC.lives <= 1) {
 				Debug.Log ("Game Over");
 				SceneManager.LoadScene ("GameOver");
+				Destroy (player);
 				GC.cleanslate ();
 			} else {
 				// Lose a life
 				GC.lives -= 1;
 				// Restart the round
 				GC.restartRound ();
-				GC.spawnPlayer ();
 			}
 		}
 		// Check if it touches a bullet
 		if (col.gameObject.tag == "bullet") {
 			myHealth -= 40;
+			GC.Points += 30;
 		} else if (col.gameObject.tag == "bulletshotgun"){
 			myHealth -= 15;
+			GC.Points += 15;
 		} else if (col.gameObject.tag == "bulletuzi"){
 			myHealth -= 5;
+			GC.Points += 10;
 		} else if (col.gameObject.tag == "RPG"){
 			myHealth -= 70;
+			GC.Points += 40;
 		} else if (col.gameObject.tag == "bomb"){
 			myHealth -= 80;
+			GC.Points += 20;
 		} else if (col.gameObject.tag == "axe"){
 			myHealth -= 20;
+			GC.Points += 30;
 		} 
 		// Check if the enemy health is 0
 		if (myHealth <= 0) {
 			GC.ZombiesDestroyed += 1;
-			GC.Points += 40;
+			GC.Points += 100;
 			Destroy (gameObject);
 		}
 

@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\UX\ESCquit.cs" />
      <Compile Include="Assets\Scripts\controller\GameController.cs" />
      <Compile Include="Assets\Scripts\controller\WepController.cs" />
+     <Compile Include="Assets\Scripts\controller\mysteryBoxController.cs" />
      <Compile Include="Assets\Scripts\gameOver\gameOverController.cs" />
      <Compile Include="Assets\Scripts\movement\EnemyMovement.cs" />
      <Compile Include="Assets\Scripts\movement\PlayerMovement.cs" />
@@ -61,6 +62,7 @@
      <Compile Include="Assets\Scripts\weapons\BulletMove.cs" />
      <Compile Include="Assets\Scripts\weapons\RocketMove.cs" />
      <Compile Include="Assets\Scripts\weapons\ShootBullet.cs" />
+     <Compile Include="Assets\gameControllerSpawn.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -7,7 +7,8 @@ public class gameOverController: MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		GameObject player = GameObject.FindGameObjectWithTag ("player");
+		Destroy (player);
 	}
 	
 	// Update is called once per frame
