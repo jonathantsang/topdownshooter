@@ -34,6 +34,11 @@ public class GameController : MonoBehaviour {
 	public AudioSource noise1;
 	public AudioSource noise2;
 
+	// WC
+	private GameObject WCobj;
+	private WepController WC;
+
+
 	void Start(){
 		spawnPlayer ();
 
@@ -63,8 +68,13 @@ public class GameController : MonoBehaviour {
 		noise1 = sounds[0];
 		noise2 = sounds[1];
 
+		// WC
+		WCobj = GameObject.FindGameObjectWithTag ("WC");
+		WC = WCobj.GetComponent<WepController> ();
+
 		// Play at beginning
 		noise2.Play();
+
 	}
 
 	void Update(){
@@ -74,6 +84,13 @@ public class GameController : MonoBehaviour {
 		// Check for new level
 		checknewlevel();
 		checkdead ();
+		cheat ();
+	}
+
+	void cheat(){
+		if(Input.GetKey("p")){
+			Points += 100;
+		}
 	}
 
 	// For the new level spawn the new enemies, is in Update function, so is continuously called
@@ -116,6 +133,7 @@ public class GameController : MonoBehaviour {
 
 	public void restartRound(){
 		DontDestroyOnLoad (this);
+		DontDestroyOnLoad (WC);
 		SceneManager.LoadScene ("Main");
 		Debug.Log ("restarted");
 	}
@@ -134,8 +152,6 @@ public class GameController : MonoBehaviour {
 
 	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode){
 		Debug.Log("Level Loaded");
-		Debug.Log(scene.name);
-		Debug.Log (mode);
 		// Reload stuff after scene changes
 		// Find the number of enemies to spawn
 		spawnnumber = waveDesign [currRound].amtZombies;
@@ -144,6 +160,17 @@ public class GameController : MonoBehaviour {
 		ZombiesDestroyed = 0;
 		// Re-find spawn points
 		spawnPoints = GameObject.FindGameObjectsWithTag ("spawn");
+
+		// Reload saved on scene load WC
+		WCobj = GameObject.FindGameObjectWithTag ("WC");
+		WC = WCobj.GetComponent<WepController> ();
+
+		// Instantiate sqr
+		GameObject square = GameObject.FindGameObjectWithTag("selector");
+		if (square != null) {
+			Instantiate (square, new Vector2 (0, 12), Quaternion.identity);
+		}
+
 		// Gotta do this since the scene start is not run since the gamecontroller is not destroyed on load
 		spawnPlayer ();
 

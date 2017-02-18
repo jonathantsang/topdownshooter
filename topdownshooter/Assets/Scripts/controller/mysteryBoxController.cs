@@ -10,22 +10,48 @@ public class mysteryBoxController : MonoBehaviour {
 	private GameObject GCobj;
 	private GameController GC;
 
+	// WC
+	private GameObject WCobj;
+	private WepController WC;
+
+	//Weapon Menu
+	private GameObject wep1;
+	private GameObject wep2;
+	private GameObject wep3;
+	private GameObject wep4;
+	private GameObject wep5;
+	private GameObject wep6;
+
+	// Unlockable
+
 	// Box timer
 	private float boxtime;
 	private float timeElapsed;
 
 	// box sound
-	public AudioSource aud;
+	private AudioSource aud;
 
 	// Use this for initialization
 	void Start () {
 		GCobj = GameObject.FindGameObjectWithTag ("GM");
 		GC = GCobj.GetComponent<GameController> ();
 
+		WCobj = GameObject.FindGameObjectWithTag ("WC");
+		WC = WCobj.GetComponent<WepController> ();
+
+		// Find each weapon to appear in mystery box
+		wep1 = GameObject.FindGameObjectWithTag ("keep1");
+		wep2 = GameObject.FindGameObjectWithTag ("keep2");
+		wep3 = GameObject.FindGameObjectWithTag ("keep3");
+		wep4 = GameObject.FindGameObjectWithTag ("keep4");
+		wep5 = GameObject.FindGameObjectWithTag ("keep5");
+		wep6 = GameObject.FindGameObjectWithTag ("keep6");
+
+		// Mystery Box sound
 		aud = GetComponent<AudioSource>();
 
-		boxtime = 15f;
-		timeElapsed = 15f;
+		boxtime = 14f;
+		timeElapsed = 14f;
 
 		costOfBox = 950;
 	}
@@ -35,18 +61,24 @@ public class mysteryBoxController : MonoBehaviour {
 		timeElapsed += Time.deltaTime;
 	}
 
+	// Need to fix the object being instantiated since it is originally not active like the weapon menu
 	void OnCollisionEnter2D(Collision2D col){
 		if (GC.Points > costOfBox && col.gameObject.tag == "player" && timeElapsed > boxtime) {
 			aud.Play();
 			Debug.Log ("box rolled");
 			GC.Points -= costOfBox;
-			int randomNum = Random.Range (1, 20) % 4 + 2;
+			int randomNum = ((int) Time.time + Random.Range (1, 5)) % 4 + 2;
 			GameObject rolled = findWeapon (randomNum);
 			// Find position to instantiate
-			Vector2 posn = transform.position;
+			Vector2 posn = gameObject.transform.position;
 			posn.y -= 1;
 			GameObject newrolled = Instantiate (rolled, posn, Quaternion.identity) as GameObject;
 			Destroy (newrolled, 12);
+
+			// Make the item available
+			WC.unlocked[randomNum] = 1;
+			string name = "wep" + randomNum;
+			WC.unlockWep (name);
 
 			timeElapsed = 0;
 		}
@@ -54,6 +86,7 @@ public class mysteryBoxController : MonoBehaviour {
 
 	// Hardcoded finding weapons for now
 	GameObject findWeapon(int randomNum){
-		return GameObject.FindGameObjectWithTag (randomNum.ToString());
+		return GameObject.FindGameObjectWithTag ("keep" + randomNum);
 	}
+
 }

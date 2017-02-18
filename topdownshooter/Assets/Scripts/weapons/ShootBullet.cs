@@ -58,7 +58,7 @@ public class ShootBullet : MonoBehaviour {
 			GameObject newthing = Instantiate (bullet, gameObject.transform.position, Quaternion.identity) as GameObject;
 			// Ignore the collision of bullet and player
 			Physics2D.IgnoreCollision (newthing.GetComponent<CircleCollider2D> (), gameObject.GetComponent<BoxCollider2D> ());
-			firerate = 0;
+			firerate = 0.1f;
 
 			// Axe
 		} else if (weaponSelect == 2) {
@@ -72,7 +72,7 @@ public class ShootBullet : MonoBehaviour {
 			GameObject newthing = Instantiate (bomb, gameObject.transform.position, Quaternion.identity) as GameObject;
 			// Ignore the collision of bullet and player
 			Physics2D.IgnoreCollision (newthing.GetComponent<CircleCollider2D> (), gameObject.GetComponent<BoxCollider2D> ());
-			firerate = -2;
+			firerate = -0.5f;
 
 			// RPG
 		} else if (weaponSelect == 4) {
@@ -82,7 +82,7 @@ public class ShootBullet : MonoBehaviour {
 			// spritepart.transform.rotation = gameObject.transform.rotation;
 			// Ignore the collision of bullet and player
 			Physics2D.IgnoreCollision (newthing.GetComponent<CircleCollider2D> (), gameObject.GetComponent<BoxCollider2D> ());
-			firerate = -3;
+			firerate = -1;
 
 			// Shotgun
 		} else if (weaponSelect == 5) {
@@ -107,7 +107,7 @@ public class ShootBullet : MonoBehaviour {
 			// Ignore the collision of bullet and player
 			Physics2D.IgnoreCollision (newthing.GetComponent<CircleCollider2D> (), gameObject.GetComponent<BoxCollider2D> ());
 			// Uzi fires faster
-			firerate = 0.6f;
+			firerate = 0.5f;
 
 			// Shotgun
 		} else {

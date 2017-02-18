@@ -9,7 +9,8 @@ A top down shooter based on zombies and other shooters.
 - Game over mechanics and lives
 - resolution scaling for 4:3 windowed screens
 - start screen and game over screen
-- Weapon customization
+- Weapon unlocking from mystery box
+- correct progression flows
 
 ## Weapons:
 - reg bullets
@@ -21,11 +22,12 @@ A top down shooter based on zombies and other shooters.
 
 ## To Add:
 
+- upgrades to guns
 - sound effects
 - better sprites
-- More rooms
-- random box
+- more rooms
 - powerups
+- rare items
 
 ## Other Notes:
 - fix bunny hopping

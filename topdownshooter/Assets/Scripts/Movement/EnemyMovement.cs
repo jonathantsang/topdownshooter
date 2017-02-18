@@ -44,8 +44,8 @@ public class EnemyMovement : MonoBehaviour {
 		}
 		// Check if it touches a bullet
 		if (col.gameObject.tag == "bullet") {
-			myHealth -= 40;
-			GC.Points += 30;
+			myHealth -= 50;
+			GC.Points += 35;
 		} else if (col.gameObject.tag == "bulletshotgun"){
 			myHealth -= 15;
 			GC.Points += 15;
@@ -53,7 +53,7 @@ public class EnemyMovement : MonoBehaviour {
 			myHealth -= 5;
 			GC.Points += 10;
 		} else if (col.gameObject.tag == "RPG"){
-			myHealth -= 70;
+			myHealth -= 100;
 			GC.Points += 40;
 		} else if (col.gameObject.tag == "bomb"){
 			myHealth -= 80;

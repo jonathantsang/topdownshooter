@@ -45,7 +45,6 @@ public class AxeMove : MonoBehaviour {
 		if (col.gameObject.tag == "enemy") {
 			//Destroy (gameObject);
 			Debug.Log("Hit Enemy");
-			Destroy (gameObject);
 		}  else if (col.gameObject.tag == "player") {
 			if (flipped == true) {
 				Debug.Log ("Boomerang came back");
