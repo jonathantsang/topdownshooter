@@ -81,7 +81,8 @@ public class ShootBullet : MonoBehaviour {
 			// GameObject spritepart = newthing.GetComponentInChildren<GameObject> () as GameObject;
 			// spritepart.transform.rotation = gameObject.transform.rotation;
 			// Ignore the collision of bullet and player
-			Physics2D.IgnoreCollision (newthing.GetComponent<CircleCollider2D> (), gameObject.GetComponent<BoxCollider2D> ());
+			// Physics2D.IgnoreCollision (newthing.GetComponent<CircleCollider2D> (), gameObject.GetComponent<BoxCollider2D> ());
+			Debug.Log(newthing);
 			firerate = -1;
 
 			// Shotgun
@@ -111,7 +112,7 @@ public class ShootBullet : MonoBehaviour {
 
 			// Shotgun
 		} else {
-			Debug.Log ("We got a problem with weapon select");
+			Debug.Log ("We got a problem with weapon select with" );
 		}
 	}
 

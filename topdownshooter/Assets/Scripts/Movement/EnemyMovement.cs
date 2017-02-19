@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class EnemyMovement : MonoBehaviour {
 
-	GameObject player;
+	private GameObject player;
 
 	private GameObject GameManager;
 	private GameController GC;
 
 	// Data about enemy
 	public int myHealth;
+
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +24,7 @@ public class EnemyMovement : MonoBehaviour {
 
 		// Initialize health
 		myHealth = GC.waveDesign [GC.currRound].zombieHealth;
+
 	}
 
 	// When the enemy detects a bullet, it takes damage
@@ -77,7 +79,30 @@ public class EnemyMovement : MonoBehaviour {
 		float step = 1 * Time.deltaTime;
 		// If player is not null, go towards the player
 		if (player != null) {
-			transform.position = Vector2.MoveTowards (transform.position, player.transform.position, step);
+
+			player = GameObject.FindGameObjectWithTag ("player");
+
+			// Calculates a vector3 that the enemy moves to that is towards the player
+			Vector3 newplace = Vector3.MoveTowards (transform.position, player.transform.position, step);
+			// Set the current enemy position to the vector3
+			transform.position = newplace;
+
+
+
+//			// Player location
+//			Vector3 playerLocation = player.transform.position;
+//
+//			// This is for debugging and draws a ray to show the vector
+//			Debug.DrawRay (transform.position, playerLocation);
+//
+//			Vector3 upAxis = new Vector3(0,0,1);
+//			//set mouses z to your targets
+//			playerLocation.z = transform.position.z;
+//			Debug.Log (playerLocation);
+//			transform.LookAt(playerLocation, upAxis);
+//			//zero out all rotations except the axis I want
+//			transform.eulerAngles = new Vector3(0,0,-transform.eulerAngles.z);
+
 		}
 	}
 }

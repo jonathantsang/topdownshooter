@@ -58,7 +58,7 @@ public class GameController : MonoBehaviour {
 		spawnInterval = waveDesign [currRound].spawnInterval;
 
 		// Counter initialized
-		localZombCounter = spawnnumber;
+		localZombCounter = 0;
 
 		// Final Level prevents overflow (hard-coded since using a list not an array)
 		finalLevel = 5;
@@ -96,15 +96,25 @@ public class GameController : MonoBehaviour {
 	// For the new level spawn the new enemies, is in Update function, so is continuously called
 	public void newRound(int level){
 		// For each one, find a random spawn location and instantiate the enemy
-		if (localZombCounter > 0) {
+		if (localZombCounter <= spawnnumber) {
 			timeInterval = Time.time - lastSpawnTime;
 			if (timeInterval > spawnInterval) {
 				if (spawnPoints.Length > 0) {
+					Debug.Log (localZombCounter);
 					pickrandom = (int)(Time.deltaTime + Random.Range (1, 200)) % spawnPoints.Length;
 
-					// These two need to be redefined because after scene is reloaded, they are destroyed
+					// Find which enemy to instantiate
+					// If the number of norm have been passed
+					//if(waveDesign[currRound].amtNorm
 					// Find enemy prefab
-					enemy = GameObject.FindGameObjectWithTag ("enemy");
+					if (localZombCounter < waveDesign [currRound].amtNorm) {
+						enemy = GameObject.FindGameObjectWithTag ("enemy");
+					} else {
+						enemy = GameObject.FindGameObjectWithTag ("enemy2");
+						Debug.Log ("fast zombie");
+						Debug.Log (enemy == null);
+					}
+						
 					// Find objects needed for first level
 					spawnPoints = GameObject.FindGameObjectsWithTag ("spawn");
 
@@ -116,7 +126,7 @@ public class GameController : MonoBehaviour {
 						Instantiate (enemy, placement.transform.position, Quaternion.identity);
 						// Delay the next spawn, and decrease counter of spawning
 						lastSpawnTime = Time.time;
-						localZombCounter -= 1;
+						localZombCounter += 1;
 						//Debug.Log (localZombCounter);
 					}
 				} else {
@@ -156,7 +166,8 @@ public class GameController : MonoBehaviour {
 		// Find the number of enemies to spawn
 		spawnnumber = waveDesign [currRound].amtZombies;
 		spawnInterval = waveDesign [currRound].spawnInterval;
-		localZombCounter = spawnnumber;
+		// localZombCounter is counting from 0 to spawnnumber
+		localZombCounter = 0;
 		ZombiesDestroyed = 0;
 		// Re-find spawn points
 		spawnPoints = GameObject.FindGameObjectsWithTag ("spawn");
@@ -207,7 +218,8 @@ public class GameController : MonoBehaviour {
 				ZombiesDestroyed = 0;
 				spawnnumber = waveDesign [currRound].amtZombies;
 				spawnInterval = waveDesign [currRound].spawnInterval;
-				localZombCounter = spawnnumber;
+				// localZombCounter counts from 0 to spawnnumber
+				localZombCounter = 0;
 				// else revert currRound changes
 			} else {
 				Debug.Log ("Level load failed");

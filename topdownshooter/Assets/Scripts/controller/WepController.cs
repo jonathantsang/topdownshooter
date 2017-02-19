@@ -110,16 +110,9 @@ public class WepController : MonoBehaviour {
 		if (scene.name == "Main" && GC.lives == 3) {
 			resetWepMenu ();
 		}
+		// Reset back to the main weapon
+		weaponchoice = 1;
 		loadWep ();
-	}
-
-	void OnApplicationQuit(){
-		for (int i = 2; i < 7; ++i) {
-			if (checkUnlocked (i)) {
-				returnWep (i).SetActive(true);
-				Debug.Log ("ran");
-			}
-		}
 	}
 
 	void OnEnable()

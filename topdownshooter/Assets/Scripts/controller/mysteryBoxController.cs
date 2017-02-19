@@ -14,14 +14,6 @@ public class mysteryBoxController : MonoBehaviour {
 	private GameObject WCobj;
 	private WepController WC;
 
-	//Weapon Menu
-	private GameObject wep1;
-	private GameObject wep2;
-	private GameObject wep3;
-	private GameObject wep4;
-	private GameObject wep5;
-	private GameObject wep6;
-
 	// Unlockable
 
 	// Box timer
@@ -40,12 +32,13 @@ public class mysteryBoxController : MonoBehaviour {
 		WC = WCobj.GetComponent<WepController> ();
 
 		// Find each weapon to appear in mystery box
-		wep1 = GameObject.FindGameObjectWithTag ("keep1");
-		wep2 = GameObject.FindGameObjectWithTag ("keep2");
-		wep3 = GameObject.FindGameObjectWithTag ("keep3");
-		wep4 = GameObject.FindGameObjectWithTag ("keep4");
-		wep5 = GameObject.FindGameObjectWithTag ("keep5");
-		wep6 = GameObject.FindGameObjectWithTag ("keep6");
+		GameObject wep1 = GameObject.FindGameObjectWithTag ("keep1");
+		GameObject wep2 = GameObject.FindGameObjectWithTag ("keep2");
+		GameObject wep3 = GameObject.FindGameObjectWithTag ("keep3");
+		GameObject wep4 = GameObject.FindGameObjectWithTag ("keep4");
+		GameObject wep5 = GameObject.FindGameObjectWithTag ("keep5");
+		GameObject wep6 = GameObject.FindGameObjectWithTag ("keep6");
+		Debug.Log (wep1.name + wep2.name + wep3.name + wep4.name + wep5.name + wep6.name + "s");
 
 		// Mystery Box sound
 		aud = GetComponent<AudioSource>();
@@ -86,6 +79,7 @@ public class mysteryBoxController : MonoBehaviour {
 
 	// Hardcoded finding weapons for now
 	GameObject findWeapon(int randomNum){
+		// For wep1-6
 		return GameObject.FindGameObjectWithTag ("keep" + randomNum);
 	}
 

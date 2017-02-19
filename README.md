@@ -12,6 +12,17 @@ A top down shooter based on zombies and other shooters.
 - Weapon unlocking from mystery box
 - correct progression flows
 
+## To Add:
+
+- more enemies (faster, slower)
+- ammo depletion
+- upgrades to guns
+- sound effects
+- better sprites
+- more rooms
+- powerups
+- rare items
+
 ## Weapons:
 - reg bullets
 - axe boomerang
@@ -20,14 +31,8 @@ A top down shooter based on zombies and other shooters.
 - shotgun
 - uzi
 
-## To Add:
-
-- upgrades to guns
-- sound effects
-- better sprites
-- more rooms
-- powerups
-- rare items
+// Known bugs:
+- shotgun can cause sporatic zombie movement
 
 ## Other Notes:
 - fix bunny hopping
@@ -39,3 +44,12 @@ A top down shooter based on zombies and other shooters.
 Worms Reloaded  
 Black Ops Zombies
 http://soundimage.org/fantasywonder/
+http://im-not-crying.deviantart.com/
+
+http://opengameart.org/content/zombie-sprites
+Author: 
+Clint Bellanger
+
+http://opengameart.org/content/animated-top-down-survivor-player
+Copyright/Attribution Notice: 
+Riley Gombart
