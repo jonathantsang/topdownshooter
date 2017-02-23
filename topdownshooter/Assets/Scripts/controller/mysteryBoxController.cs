@@ -60,7 +60,7 @@ public class mysteryBoxController : MonoBehaviour {
 			aud.Play();
 			Debug.Log ("box rolled");
 			GC.Points -= costOfBox;
-			int randomNum = ((int) Time.time + Random.Range (1, 5)) % 4 + 2;
+			int randomNum = ((int) Time.time + Random.Range (1, 5)) % 5 + 2;
 			GameObject rolled = findWeapon (randomNum);
 			// Find position to instantiate
 			Vector2 posn = gameObject.transform.position;

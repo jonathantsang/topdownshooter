@@ -96,7 +96,8 @@ public class GameController : MonoBehaviour {
 	// For the new level spawn the new enemies, is in Update function, so is continuously called
 	public void newRound(int level){
 		// For each one, find a random spawn location and instantiate the enemy
-		if (localZombCounter <= spawnnumber) {
+		// localZombCounter starts at 0, so it will reach one less than spawnnumber
+		if (localZombCounter < spawnnumber) {
 			timeInterval = Time.time - lastSpawnTime;
 			if (timeInterval > spawnInterval) {
 				if (spawnPoints.Length > 0) {
@@ -104,15 +105,19 @@ public class GameController : MonoBehaviour {
 					pickrandom = (int)(Time.deltaTime + Random.Range (1, 200)) % spawnPoints.Length;
 
 					// Find which enemy to instantiate
-					// If the number of norm have been passed
-					//if(waveDesign[currRound].amtNorm
+					// If the number of norm have been passed, go to the next value
 					// Find enemy prefab
 					if (localZombCounter < waveDesign [currRound].amtNorm) {
-						enemy = GameObject.FindGameObjectWithTag ("enemy");
-					} else {
+						enemy = GameObject.FindGameObjectWithTag ("enemy1");
+						Debug.Log ("norm zombie");
+					} else if (localZombCounter < waveDesign [currRound].amtNorm + waveDesign [currRound].amtFasts) {
 						enemy = GameObject.FindGameObjectWithTag ("enemy2");
 						Debug.Log ("fast zombie");
-						Debug.Log (enemy == null);
+					} else if (localZombCounter < waveDesign [currRound].amtNorm + waveDesign [currRound].amtFasts + waveDesign [currRound].amtRenegades) {
+						enemy = GameObject.FindGameObjectWithTag ("enemy3");
+						Debug.Log ("slow zombie");
+					} else {
+						Debug.Log ("problem spawning");
 					}
 						
 					// Find objects needed for first level
@@ -129,6 +134,7 @@ public class GameController : MonoBehaviour {
 						localZombCounter += 1;
 						//Debug.Log (localZombCounter);
 					}
+
 				} else {
 					Debug.Log ("spawnPoints is empty");
 				}

@@ -30,7 +30,7 @@ public class BulletMove : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {
-		if (col.gameObject.tag == "enemy") {
+		if (col.gameObject.tag == "enemy1" || col.gameObject.tag == "enemy2") {
 			//Destroy (gameObject);
 			Debug.Log("Hit Enemy");
 			Destroy (gameObject);

@@ -11,17 +11,18 @@ A top down shooter based on zombies and other shooters.
 - start screen and game over screen
 - Weapon unlocking from mystery box
 - correct progression flows
+- level customization with new faster enemy (work out health next)
+- more enemies (faster, slower)
+- sound effects
+- better sprites
 
 ## To Add:
 
-- more enemies (faster, slower)
-- ammo depletion
 - upgrades to guns
-- sound effects
-- better sprites
 - more rooms
 - powerups
 - rare items
+- ammo depletion (may not be added)
 
 ## Weapons:
 - reg bullets
@@ -32,7 +33,7 @@ A top down shooter based on zombies and other shooters.
 - uzi
 
 // Known bugs:
-- shotgun can cause sporatic zombie movement
+- shotgun can cause sporatic zombie movement (caused with rotation)
 
 ## Other Notes:
 - fix bunny hopping
