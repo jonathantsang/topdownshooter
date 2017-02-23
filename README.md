@@ -3,7 +3,6 @@
 A top down shooter based on zombies and other shooters.
 
 ![alt text](game1.png)
-![alt text](game.png)
 
 ## Features:
 
