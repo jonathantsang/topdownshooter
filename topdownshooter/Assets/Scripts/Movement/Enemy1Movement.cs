@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Enemy2Movement : EnemyMovement {
+public class Enemy1Movement : EnemyMovement {
 
-	// Fast Zombie
-	//public float healthMultiplier = 0.5f;
+	// Regular Zombie
+	//public float healthMultiplier = 1f;
 
 }

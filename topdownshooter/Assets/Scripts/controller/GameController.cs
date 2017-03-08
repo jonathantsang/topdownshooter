@@ -7,11 +7,11 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour {
 
 	// Main Storage Data
-	public int currRound;
-	public int ZombiesDestroyed;
-	public int Points;
-	public int lives;
-	public int finalLevel;
+	static public int currRound;
+	static public int ZombiesDestroyed;
+	static public int Points;
+	static public int lives;
+	static public int finalLevel;
 	public WaveData[] waveDesign;
 
 	// Spawning Enemies
@@ -202,7 +202,7 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-	public void cleanslate(){
+	public static void cleanslate(){
 		currRound = 0;
 		ZombiesDestroyed = 0;
 		Points = 0;

@@ -11,11 +11,15 @@ public class EnemyMovement : MonoBehaviour {
 	private GameController GC;
 
 	// Data about enemy
-	public int myHealth;
+	public float myHealth;
+	public float healthMultiplier;
 
 
 	// Use this for initialization
-	void Start () {
+	public void Start () {
+
+		healthMultiplier = 1f;
+
 		player = GameObject.FindGameObjectWithTag ("player");
 
 		// Find Game Manager Script
@@ -23,7 +27,7 @@ public class EnemyMovement : MonoBehaviour {
 		GC = GameManager.GetComponent<GameController> ();
 
 		// Initialize health
-		myHealth = GC.waveDesign [GC.currRound].zombieHealth;
+		myHealth = GC.waveDesign [GameController.currRound].zombieHealth * healthMultiplier;
 
 	}
 
@@ -32,14 +36,14 @@ public class EnemyMovement : MonoBehaviour {
 		// Check if the enemy collides with the player
 		if (col.gameObject.tag == "player") {
 			Debug.Log("live lost");
-			if (GC.lives <= 1) {
+			if (GameController.lives <= 1) {
 				Debug.Log ("Game Over");
 				SceneManager.LoadScene ("GameOver");
 				Destroy (player);
-				GC.cleanslate ();
+				GameController.cleanslate ();
 			} else {
 				// Lose a life
-				GC.lives -= 1;
+				GameController.lives -= 1;
 				// Restart the round
 				GC.restartRound ();
 			}
@@ -47,27 +51,27 @@ public class EnemyMovement : MonoBehaviour {
 		// Check if it touches a bullet
 		if (col.gameObject.tag == "bullet") {
 			myHealth -= 50;
-			GC.Points += 35;
+			GameController.Points += 35;
 		} else if (col.gameObject.tag == "bulletshotgun"){
 			myHealth -= 15;
-			GC.Points += 15;
+			GameController.Points += 15;
 		} else if (col.gameObject.tag == "bulletuzi"){
 			myHealth -= 5;
-			GC.Points += 10;
+			GameController.Points += 10;
 		} else if (col.gameObject.tag == "RPG"){
 			myHealth -= 100;
-			GC.Points += 40;
+			GameController.Points += 40;
 		} else if (col.gameObject.tag == "bomb"){
 			myHealth -= 80;
-			GC.Points += 20;
+			GameController.Points += 20;
 		} else if (col.gameObject.tag == "axe"){
 			myHealth -= 20;
-			GC.Points += 30;
+			GameController.Points += 30;
 		} 
 		// Check if the enemy health is 0
 		if (myHealth <= 0) {
-			GC.ZombiesDestroyed += 1;
-			GC.Points += 100;
+			GameController.ZombiesDestroyed += 1;
+			GameController.Points += 100;
 			Destroy (gameObject);
 		}
 
@@ -89,19 +93,19 @@ public class EnemyMovement : MonoBehaviour {
 
 
 
-//			// Player location
-//			Vector3 playerLocation = player.transform.position;
-//
-//			// This is for debugging and draws a ray to show the vector
-//			Debug.DrawRay (transform.position, playerLocation);
-//
-//			Vector3 upAxis = new Vector3(0,0,1);
-//			//set mouses z to your targets
-//			playerLocation.z = transform.position.z;
-//			Debug.Log (playerLocation);
-//			transform.LookAt(playerLocation, upAxis);
-//			//zero out all rotations except the axis I want
-//			transform.eulerAngles = new Vector3(0,0,-transform.eulerAngles.z);
+			//			// Player location
+			//			Vector3 playerLocation = player.transform.position;
+			//
+			//			// This is for debugging and draws a ray to show the vector
+			//			Debug.DrawRay (transform.position, playerLocation);
+			//
+			//			Vector3 upAxis = new Vector3(0,0,1);
+			//			//set mouses z to your targets
+			//			playerLocation.z = transform.position.z;
+			//			Debug.Log (playerLocation);
+			//			transform.LookAt(playerLocation, upAxis);
+			//			//zero out all rotations except the axis I want
+			//			transform.eulerAngles = new Vector3(0,0,-transform.eulerAngles.z);
 
 		}
 	}

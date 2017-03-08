@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\controller\WepController.cs" />
      <Compile Include="Assets\Scripts\controller\gameControllerSpawn.cs" />
      <Compile Include="Assets\Scripts\controller\mysteryBoxController.cs" />
+     <Compile Include="Assets\Scripts\movement\Enemy1Movement.cs" />
      <Compile Include="Assets\Scripts\movement\Enemy2Movement.cs" />
      <Compile Include="Assets\Scripts\movement\Enemy3Movement.cs" />
      <Compile Include="Assets\Scripts\movement\EnemyMovement.cs" />

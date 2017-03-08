@@ -6,10 +6,6 @@ public class mysteryBoxController : MonoBehaviour {
 
 	private int costOfBox;
 
-	// GC
-	private GameObject GCobj;
-	private GameController GC;
-
 	// WC
 	private GameObject WCobj;
 	private WepController WC;
@@ -25,8 +21,6 @@ public class mysteryBoxController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GCobj = GameObject.FindGameObjectWithTag ("GM");
-		GC = GCobj.GetComponent<GameController> ();
 
 		WCobj = GameObject.FindGameObjectWithTag ("WC");
 		WC = WCobj.GetComponent<WepController> ();
@@ -56,10 +50,10 @@ public class mysteryBoxController : MonoBehaviour {
 
 	// Need to fix the object being instantiated since it is originally not active like the weapon menu
 	void OnCollisionEnter2D(Collision2D col){
-		if (GC.Points > costOfBox && col.gameObject.tag == "player" && timeElapsed > boxtime) {
+		if (GameController.Points > costOfBox && col.gameObject.tag == "player" && timeElapsed > boxtime) {
 			aud.Play();
 			Debug.Log ("box rolled");
-			GC.Points -= costOfBox;
+			GameController.Points -= costOfBox;
 			int randomNum = ((int) Time.time + Random.Range (1, 5)) % 5 + 2;
 			GameObject rolled = findWeapon (randomNum);
 			// Find position to instantiate

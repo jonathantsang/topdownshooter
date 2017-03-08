@@ -107,7 +107,7 @@ public class WepController : MonoBehaviour {
 		squareSelector = GameObject.FindGameObjectWithTag ("selector");
 		Debug.Log (scene.name + " on reloading");
 		// Meaning fresh new game with 3 lives, hardcoded
-		if (scene.name == "Main" && GC.lives == 3) {
+		if (scene.name == "Main" && GameController.lives == 3) {
 			resetWepMenu ();
 		}
 		// Reset back to the main weapon
